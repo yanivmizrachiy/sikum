@@ -5,81 +5,103 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>סיכום מקבילית</title>
 <meta name="theme-color" content="#16a34a">
+<meta name="description" content="סיכום מקבילית">
 <link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png">
 <style>
-body{margin:0;font-family:Arial;background:#ecfdf5}
-.wrap{max-width:900px;margin:20px auto;background:white;padding:24px;border-radius:20px}
-h1{text-align:center}
-.btn{display:none;background:#16a34a;color:white;border:none;padding:14px 20px;border-radius:14px;font-size:18px;margin-bottom:20px}
-.card{background:#f0fdf4;border:1px solid #bbf7d0;padding:14px;border-radius:14px;margin:10px 0}
-.math{font-weight:bold;font-size:20px}
+body{margin:0;font-family:Arial,sans-serif;background:#eef7f1;color:#111}
+.wrap{max-width:900px;margin:0 auto;padding:24px}
+.topbar{display:flex;justify-content:center;margin:8px 0 22px}
+.install-btn{background:#16a34a;color:#fff;border:none;padding:16px 24px;border-radius:18px;font-size:20px;font-weight:700;cursor:pointer;box-shadow:0 8px 18px rgba(22,163,74,.28)}
+.install-msg{text-align:center;color:#166534;font-size:14px;margin-top:10px;min-height:20px}
+h1{text-align:center;font-size:62px;margin:18px 0 22px}
+.card{background:#edf7f1;border:1px solid #cdebd7;border-radius:26px;padding:26px;margin:18px 0;font-size:30px;line-height:1.5}
+.math{font-weight:700;font-size:34px}
+@media (max-width:700px){
+  .wrap{padding:14px}
+  h1{font-size:42px}
+  .card{font-size:23px;padding:20px}
+  .math{font-size:28px}
+  .install-btn{font-size:18px;padding:14px 20px}
+}
 </style>
 </head>
 <body>
-
 <div class="wrap">
-<div style="text-align:center;margin-bottom:20px"><button onclick="installApp()" style="background:#16a34a;color:white;border:none;padding:16px 24px;font-size:20px;border-radius:16px;cursor:pointer">📲 התקן למסך הבית</button></div>
 
-<button id="installBtn" class="btn">התקן למסך הבית</button>
+  <div class="topbar">
+    <button id="installBtn" class="install-btn">התקן למסך הבית</button>
+  </div>
+  <div id="installMsg" class="install-msg"></div>
 
-<h1>מקבילית</h1>
+  <h1>מקבילית</h1>
 
-<div class="card">
-מרובע שבו כל זוג צלעות נגדיות מקבילות.
-</div>
+  <div class="card">
+    מרובע שבו כל זוג צלעות נגדיות מקבילות.
+  </div>
 
-<div class="card">
-<div class="math">AB ∥ CD</div>
-<div class="math">BC ∥ AD</div>
-</div>
+  <div class="card">
+    <div class="math">AB ∥ CD</div>
+    <div class="math">BC ∥ AD</div>
+  </div>
 
-<div class="card">
-צלעות נגדיות שוות
-<div class="math">AB = CD</div>
-<div class="math">BC = AD</div>
-</div>
+  <div class="card">
+    צלעות נגדיות שוות
+    <div class="math">AB = CD</div>
+    <div class="math">BC = AD</div>
+  </div>
 
-<div class="card">
-זוויות נגדיות שוות
-<div class="math">∠A = ∠C</div>
-<div class="math">∠B = ∠D</div>
-</div>
+  <div class="card">
+    זוויות נגדיות שוות
+    <div class="math">∠A = ∠C</div>
+    <div class="math">∠B = ∠D</div>
+  </div>
 
-<div class="card">
-זוויות סמוכות משלימות
-<div class="math">∠A + ∠B = 180°</div>
-</div>
+  <div class="card">
+    זוויות סמוכות משלימות
+    <div class="math">∠A + ∠B = 180°</div>
+  </div>
 
-<div class="card">
-האלכסונים חוצים זה את זה
-<div class="math">AO = OC</div>
-<div class="math">BO = OD</div>
-</div>
+  <div class="card">
+    האלכסונים חוצים זה את זה
+    <div class="math">AO = OC</div>
+    <div class="math">BO = OD</div>
+  </div>
 
 </div>
 
 <script>
-let deferredPrompt=null;
+let deferredPrompt = null;
 
-window.addEventListener('beforeinstallprompt',e=>{
-e.preventDefault();
-deferredPrompt=e;
-document.getElementById("installBtn").style.display="block";
+function setMsg(text){
+  const el = document.getElementById("installMsg");
+  if(el) el.textContent = text || "";
+}
+
+window.addEventListener("beforeinstallprompt", (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  setMsg("אפשר להתקין עכשיו למסך הבית.");
 });
 
-document.getElementById("installBtn").onclick=async()=>{
-if(!deferredPrompt)return;
-deferredPrompt.prompt();
-await deferredPrompt.userChoice;
-deferredPrompt=null;
-};
+window.addEventListener("appinstalled", () => {
+  deferredPrompt = null;
+  const btn = document.getElementById("installBtn");
+  if (btn) {
+    btn.disabled = true;
+    btn.textContent = "הותקן בהצלחה";
+  }
+  setMsg("האפליקציה נוספה למסך הבית.");
+});
+
+document.getElementById("installBtn").addEventListener("click", async () => {
+  if (deferredPrompt) {
+    deferredPrompt.prompt();
+    try { await deferredPrompt.userChoice; } catch(e) {}
+    return;
+  }
+  setMsg("אם לא נפתח חלון התקנה: בתפריט הדפדפן ⋮ בחר הוסף למסך הבית או התקן אפליקציה.");
+});
 </script>
-
-
-<script src="install.js"></script>
 </body>
 </html>
-
-<script>
-let deferredPrompt;window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();deferredPrompt=e;});function installApp(){if(deferredPrompt){deferredPrompt.prompt();deferredPrompt.userChoice.then(()=>{deferredPrompt=null});}else{alert("פתח בתפריט הדפדפן ⋮ ובחר הוסף למסך הבית");}}
-</script>
