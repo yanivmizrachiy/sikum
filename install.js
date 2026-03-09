@@ -1,8 +1,8 @@
 let deferredPrompt = null;
 
-function setMsg(txt){
-  const m = document.getElementById("installMsg");
-  if(m) m.textContent = txt || "";
+function msg(t){
+  const el = document.getElementById("installMsg");
+  if (el) el.textContent = t || "";
 }
 
 window.addEventListener("beforeinstallprompt", (e) => {
@@ -13,7 +13,7 @@ window.addEventListener("beforeinstallprompt", (e) => {
     btn.disabled = false;
     btn.textContent = "התקן למסך הבית";
   }
-  setMsg("");
+  msg("");
 });
 
 window.addEventListener("appinstalled", () => {
@@ -23,21 +23,24 @@ window.addEventListener("appinstalled", () => {
     btn.disabled = true;
     btn.textContent = "הותקן בהצלחה";
   }
-  setMsg("האפליקציה נוספה למסך הבית.");
+  msg("האפליקציה נוספה למסך הבית.");
 });
 
 document.addEventListener("DOMContentLoaded", () => {
   const btn = document.getElementById("installBtn");
   if (!btn) return;
 
+  btn.style.display = "inline-flex";
   btn.disabled = false;
+
   btn.onclick = async () => {
     if (deferredPrompt) {
-      deferredPrompt.prompt();
-      try { await deferredPrompt.userChoice; } catch(e) {}
+      try {
+        await deferredPrompt.prompt();
+        await deferredPrompt.userChoice;
+      } catch(e) {}
       return;
     }
-
-    setMsg("אם חלון התקנה לא נפתח: פתח בתפריט הדפדפן ⋮ ואז בחר 'הוסף למסך הבית' או 'התקן אפליקציה'.");
+    msg("אם לא נפתח חלון התקנה: פתח בתפריט הדפדפן ⋮ ואז בחר 'הוסף למסך הבית' או 'התקן אפליקציה'.");
   };
 });
