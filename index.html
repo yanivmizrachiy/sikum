@@ -18,6 +18,7 @@ h1{text-align:center}
 <body>
 
 <div class="wrap">
+<div style="text-align:center;margin-bottom:20px"><button onclick="installApp()" style="background:#16a34a;color:white;border:none;padding:16px 24px;font-size:20px;border-radius:16px;cursor:pointer">📲 התקן למסך הבית</button></div>
 
 <button id="installBtn" class="btn">התקן למסך הבית</button>
 
@@ -78,3 +79,7 @@ deferredPrompt=null;
 <script src="install.js"></script>
 </body>
 </html>
+
+<script>
+let deferredPrompt;window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();deferredPrompt=e;});function installApp(){if(deferredPrompt){deferredPrompt.prompt();deferredPrompt.userChoice.then(()=>{deferredPrompt=null});}else{alert("פתח בתפריט הדפדפן ⋮ ובחר הוסף למסך הבית");}}
+</script>
