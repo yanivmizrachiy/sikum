@@ -1,122 +1,78 @@
 <!doctype html>
 <html lang="he" dir="rtl">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>סיכום מקבילית</title>
-  <meta name="theme-color" content="#16a34a">
-  <meta name="description" content="סיכום מקבילית">
-  <link rel="manifest" href="manifest.webmanifest">
-  <link rel="icon" href="icons/icon-192.png">
-  <style>
-    body{margin:0;font-family:Arial,sans-serif;background:linear-gradient(180deg,#ecfdf5,#f0fdf4);color:#14532d}
-    .wrap{max-width:980px;margin:24px auto;background:#fff;padding:24px;border-radius:24px;box-shadow:0 12px 34px rgba(0,0,0,.08)}
-    h1{margin-top:0;font-size:42px;text-align:center}
-    h2{margin-top:28px}
-    .btn{
-      display:none;background:#16a34a;color:#fff;border:none;padding:14px 20px;border-radius:16px;
-      font-size:18px;font-weight:700;cursor:pointer;margin:0 auto 18px auto
-    }
-    .math{
-      background:#ecfdf5;border:1px solid #bbf7d0;border-radius:14px;
-      padding:12px 14px;margin:10px 0;font-size:22px;font-weight:700
-    }
-    .card{
-      background:#f8fffb;border:1px solid #d1fae5;border-radius:18px;padding:16px;margin:12px 0
-    }
-    svg{display:block;max-width:100%;height:auto;margin:18px auto}
-    .note{color:#166534;text-align:center;font-size:14px;margin-top:14px}
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>סיכום מקבילית</title>
+<meta name="theme-color" content="#16a34a">
+<link rel="manifest" href="manifest.webmanifest">
+<style>
+body{margin:0;font-family:Arial;background:#ecfdf5}
+.wrap{max-width:900px;margin:20px auto;background:white;padding:24px;border-radius:20px}
+h1{text-align:center}
+.btn{display:none;background:#16a34a;color:white;border:none;padding:14px 20px;border-radius:14px;font-size:18px;margin-bottom:20px}
+.card{background:#f0fdf4;border:1px solid #bbf7d0;padding:14px;border-radius:14px;margin:10px 0}
+.math{font-weight:bold;font-size:20px}
+</style>
 </head>
 <body>
-  <div class="wrap">
-    <button id="installBtn" class="btn">התקן למסך הבית</button>
 
-    <h1>מקבילית</h1>
+<div class="wrap">
 
-    <h2>הגדרה</h2>
-    <div class="card">מרובע שבו כל זוג צלעות נגדיות מקבילות הוא מקבילית.</div>
+<button id="installBtn" class="btn">התקן למסך הבית</button>
 
-    <h2>סימון</h2>
-    <div class="math">ABCD מקבילית</div>
+<h1>מקבילית</h1>
 
-    <h2>כתיב מתמטי</h2>
-    <div class="math">AB ∥ CD</div>
-    <div class="math">BC ∥ AD</div>
+<div class="card">
+מרובע שבו כל זוג צלעות נגדיות מקבילות.
+</div>
 
-    <h2>שרטוט</h2>
-    <svg viewBox="0 0 640 420" aria-label="שרטוט מקבילית ABCD">
-      <defs>
-        <linearGradient id="fillBlue" x1="0" x2="1">
-          <stop offset="0%" stop-color="#eef4ff"/>
-          <stop offset="100%" stop-color="#d9e8ff"/>
-        </linearGradient>
-        <marker id="arrowBlue" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto-start-reverse">
-          <path d="M0,0 L10,5 L0,10 z" fill="#2563eb"/>
-        </marker>
-      </defs>
+<div class="card">
+<div class="math">AB ∥ CD</div>
+<div class="math">BC ∥ AD</div>
+</div>
 
-      <polygon points="120,300 380,300 500,120 240,120" fill="url(#fillBlue)" stroke="#111827" stroke-width="5"/>
-      <line x1="120" y1="300" x2="500" y2="120" stroke="#94a3b8" stroke-width="3" stroke-dasharray="10 7"/>
-      <line x1="380" y1="300" x2="240" y2="120" stroke="#94a3b8" stroke-width="3" stroke-dasharray="10 7"/>
+<div class="card">
+צלעות נגדיות שוות
+<div class="math">AB = CD</div>
+<div class="math">BC = AD</div>
+</div>
 
-      <circle cx="310" cy="210" r="6" fill="#dc2626"/>
-      <text x="325" y="204" font-size="28" font-weight="700" fill="#dc2626">O</text>
+<div class="card">
+זוויות נגדיות שוות
+<div class="math">∠A = ∠C</div>
+<div class="math">∠B = ∠D</div>
+</div>
 
-      <line x1="180" y1="327" x2="320" y2="327" stroke="#2563eb" stroke-width="4" marker-start="url(#arrowBlue)" marker-end="url(#arrowBlue)"/>
-      <line x1="300" y1="93" x2="440" y2="93" stroke="#2563eb" stroke-width="4" marker-start="url(#arrowBlue)" marker-end="url(#arrowBlue)"/>
-      <line x1="92" y1="253" x2="188" y2="145" stroke="#2563eb" stroke-width="4" marker-start="url(#arrowBlue)" marker-end="url(#arrowBlue)"/>
-      <line x1="432" y1="277" x2="528" y2="169" stroke="#2563eb" stroke-width="4" marker-start="url(#arrowBlue)" marker-end="url(#arrowBlue)"/>
+<div class="card">
+זוויות סמוכות משלימות
+<div class="math">∠A + ∠B = 180°</div>
+</div>
 
-      <circle cx="120" cy="300" r="5.5" fill="#111827"/>
-      <circle cx="380" cy="300" r="5.5" fill="#111827"/>
-      <circle cx="500" cy="120" r="5.5" fill="#111827"/>
-      <circle cx="240" cy="120" r="5.5" fill="#111827"/>
+<div class="card">
+האלכסונים חוצים זה את זה
+<div class="math">AO = OC</div>
+<div class="math">BO = OD</div>
+</div>
 
-      <text x="98" y="333" font-size="30" font-weight="700" fill="#111827">A</text>
-      <text x="386" y="333" font-size="30" font-weight="700" fill="#111827">B</text>
-      <text x="511" y="124" font-size="30" font-weight="700" fill="#111827">C</text>
-      <text x="216" y="110" font-size="30" font-weight="700" fill="#111827">D</text>
+</div>
 
-      <text x="250" y="289" font-size="22" fill="#2563eb">AB</text>
-      <text x="363" y="109" font-size="22" fill="#2563eb">CD</text>
-      <text x="146" y="202" font-size="22" fill="#2563eb">AD</text>
-      <text x="454" y="230" font-size="22" fill="#2563eb">BC</text>
-      <text x="255" y="160" font-size="22" fill="#64748b">AC</text>
-      <text x="350" y="168" font-size="22" fill="#64748b">BD</text>
-    </svg>
+<script>
+let deferredPrompt=null;
 
-    <h2>תכונות המקבילית</h2>
+window.addEventListener('beforeinstallprompt',e=>{
+e.preventDefault();
+deferredPrompt=e;
+document.getElementById("installBtn").style.display="block";
+});
 
-    <div class="card">
-      <strong>1.</strong> במקבילית שני זוגות צלעות נגדיות מקבילות (לפי הגדרה).
-      <div class="math">AB ∥ CD &nbsp;&nbsp;&nbsp; BC ∥ AD</div>
-    </div>
+document.getElementById("installBtn").onclick=async()=>{
+if(!deferredPrompt)return;
+deferredPrompt.prompt();
+await deferredPrompt.userChoice;
+deferredPrompt=null;
+};
+</script>
 
-    <div class="card">
-      <strong>2.</strong> במקבילית צלעות נגדיות שוות.
-      <div class="math">AB = CD &nbsp;&nbsp;&nbsp; BC = AD</div>
-    </div>
-
-    <div class="card">
-      <strong>3.</strong> במקבילית זוויות נגדיות שוות.
-      <div class="math">∠A = ∠C &nbsp;&nbsp;&nbsp; ∠B = ∠D</div>
-    </div>
-
-    <div class="card">
-      <strong>4.</strong> במקבילית זוויות סמוכות משלימות ל־180°.
-      <div class="math">∠A + ∠B = 180° &nbsp;&nbsp;&nbsp; ∠B + ∠C = 180°</div>
-    </div>
-
-    <div class="card">
-      <strong>5.</strong> במקבילית האלכסונים חוצים זה את זה.
-      <p>אם האלכסונים AC ו־BD נחתכים בנקודה O:</p>
-      <div class="math">AO = OC &nbsp;&nbsp;&nbsp; BO = OD</div>
-    </div>
-
-    <div class="note">אם כפתור ההתקנה לא מופיע, פתח בתפריט הדפדפן: הוסף למסך הבית</div>
-  </div>
-
-  <script src="install.js"></script>
 </body>
 </html>
