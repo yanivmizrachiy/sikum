@@ -1,127 +1,72 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>סיכום מקבילית</title>
-<meta name="theme-color" content="#16a34a" />
-<meta name="description" content="סיכום מקבילית עם כפתור התקנה למסך הבית" />
-<link rel="manifest" href="manifest.webmanifest" />
-<link rel="icon" href="icons/icon-192.png" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>סיכום – מקבילית</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png">
+<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--green:#16a34a;--green-dark:#15803d;--bg:#eef7f1;--card:#edf7f1;--border:#cdebd7;--text:#111827}
-*{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:var(--bg);color:var(--text)}
-.wrap{max-width:900px;margin:0 auto;padding:20px 14px 40px}
-.topbar{display:flex;justify-content:center;margin:8px 0 10px}
-.install-btn{background:linear-gradient(180deg,var(--green),var(--green-dark));color:#fff;border:none;padding:16px 24px;border-radius:18px;font-size:20px;font-weight:700;cursor:pointer;box-shadow:0 10px 24px rgba(22,163,74,.25)}
-.install-btn:disabled{opacity:.7;cursor:default}
-.install-msg{text-align:center;color:#166534;font-size:15px;min-height:24px;margin:4px 0 14px}
-h1{text-align:center;font-size:56px;margin:14px 0 20px}
-.card{background:var(--card);border:1px solid var(--border);border-radius:26px;padding:24px;margin:18px 0;font-size:28px;line-height:1.5}
-.math{font-weight:700;font-size:34px}
-.help-box{display:none;background:#fff;border:2px dashed var(--green);border-radius:20px;padding:18px;margin:14px 0 0;font-size:20px;line-height:1.7;color:#14532d}
-.help-box.show{display:block}
-.mini{font-size:16px;color:#166534;text-align:center;margin-top:10px}
-@media (max-width:700px){h1{font-size:40px}.card{font-size:22px;padding:20px}.math{font-size:28px}.install-btn{font-size:18px;padding:14px 18px}.help-box{font-size:18px}}
+body{font-family:"Assistant",sans-serif;background:#fff;color:#111;margin:0}
+.wrap{max-width:720px;margin:auto;padding:40px 24px}
+h1{font-size:40px;text-align:center;margin-bottom:30px}
+.card{border:1px solid #e5e5e5;border-radius:12px;padding:18px;margin-bottom:18px;font-size:20px;line-height:1.7}
+.math{font-size:22px;font-weight:600;margin-top:6px}
+.install{margin-bottom:30px;text-align:center}
+button{background:#000;color:#fff;border:none;padding:12px 24px;border-radius:10px;font-size:16px;cursor:pointer}
+button:hover{background:#222}
+.note{margin-top:20px;font-size:14px;color:#555;text-align:center}
 </style>
 </head>
 <body>
-  <div class="wrap">
-    <div class="topbar">
-      <button id="installBtn" class="install-btn">התקן למסך הבית</button>
-    </div>
-    <div id="installMsg" class="install-msg"></div>
-    <div id="helpBox" class="help-box">
-      לא נפתח חלון התקנה אוטומטי.<br>
-      פתח את תפריט הדפדפן <strong>⋮</strong> ואז בחר:
-      <br><strong>הוסף למסך הבית</strong>
-      <br>או
-      <br><strong>התקן אפליקציה</strong>
-    </div>
 
-    <h1>מקבילית</h1>
+<div class="wrap">
 
-    <div class="card">מרובע שבו כל זוג צלעות נגדיות מקבילות.</div>
+<div class="install">
+<button id="installBtn">התקן אפליקציה</button>
+<div class="note" id="installMsg"></div>
+</div>
 
-    <div class="card">
-      <div class="math">AB ∥ CD</div>
-      <div class="math">BC ∥ AD</div>
-    </div>
+<h1>מקבילית</h1>
 
-    <div class="card">
-      צלעות נגדיות שוות
-      <div class="math">AB = CD</div>
-      <div class="math">BC = AD</div>
-    </div>
+<div class="card">
+מרובע שבו כל זוג צלעות נגדיות מקבילות
+</div>
 
-    <div class="card">
-      זוויות נגדיות שוות
-      <div class="math">∠A = ∠C</div>
-      <div class="math">∠B = ∠D</div>
-    </div>
+<div class="card">
+<div class="math">AB ∥ CD</div>
+<div class="math">BC ∥ AD</div>
+</div>
 
-    <div class="card">
-      זוויות סמוכות משלימות
-      <div class="math">∠A + ∠B = 180°</div>
-    </div>
+<div class="card">
+צלעות נגדיות שוות
+<div class="math">AB = CD</div>
+<div class="math">BC = AD</div>
+</div>
 
-    <div class="card">
-      האלכסונים חוצים זה את זה
-      <div class="math">AO = OC</div>
-      <div class="math">BO = OD</div>
-    </div>
+<div class="card">
+זוויות נגדיות שוות
+<div class="math">∠A = ∠C</div>
+<div class="math">∠B = ∠D</div>
+</div>
 
-    <div class="mini">אם האפליקציה כבר מותקנת, חלון ההתקנה לא תמיד יופיע שוב.</div>
-  </div>
+<div class="card">
+זוויות סמוכות משלימות
+<div class="math">∠A + ∠B = 180°</div>
+</div>
 
-<script>
-let deferredPrompt = null;
-const installBtn = document.getElementById("installBtn");
-const installMsg = document.getElementById("installMsg");
-const helpBox = document.getElementById("helpBox");
+<div class="card">
+האלכסונים חוצים זה את זה
+<div class="math">AO = OC</div>
+<div class="math">BO = OD</div>
+</div>
 
-function setMsg(text){ installMsg.textContent = text || ""; }
-function showHelp(){ helpBox.classList.add("show"); }
-function hideHelp(){ helpBox.classList.remove("show"); }
+<div class="note">אם כפתור ההתקנה לא פועל: פתח ⋮ בדפדפן → הוסף למסך הבית</div>
 
-window.addEventListener("beforeinstallprompt", (e) => {
-  e.preventDefault();
-  deferredPrompt = e;
-  setMsg("אפשר להתקין עכשיו למסך הבית.");
-  hideHelp();
-});
+</div>
 
-window.addEventListener("appinstalled", () => {
-  deferredPrompt = null;
-  installBtn.disabled = true;
-  installBtn.textContent = "הותקן בהצלחה";
-  setMsg("האפליקציה נוספה למסך הבית.");
-  hideHelp();
-});
+<script src="install.js"></script>
 
-installBtn.addEventListener("click", async () => {
-  hideHelp();
-  if (deferredPrompt) {
-    try {
-      await deferredPrompt.prompt();
-      await deferredPrompt.userChoice;
-    } catch (err) {
-      setMsg("לא נפתחה התקנה. נסה שוב.");
-      showHelp();
-    }
-    return;
-  }
-  setMsg("אין כרגע חלון התקנה אוטומטי.");
-  showHelp();
-});
-
-if ("serviceWorker" in navigator) {
-  window.addEventListener("load", async () => {
-    try { await navigator.serviceWorker.register("./sw.js?v=2"); }
-    catch (err) { console.error(err); }
-  });
-}
-</script>
 </body>
 </html>
