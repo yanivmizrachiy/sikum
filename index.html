@@ -1,140 +1,207 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraph.css">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>סיכום – מקבילית</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
-
+:root{
+  --blue:#163a63;
+  --text:#111111;
+  --border:#d7dee8;
+  --card:#ffffff;
+}
+*{box-sizing:border-box}
 body{
-font-family:"Assistant",sans-serif;
-background:#ffffff;
-color:#000000;
-margin:0;
+  margin:0;
+  background:#ffffff;
+  color:var(--text);
+  font-family:"Assistant",sans-serif;
+  line-height:1.75;
 }
-
-.wrap{
-max-width:720px;
-margin:auto;
-padding:40px 24px;
+.page{
+  max-width:980px;
+  margin:0 auto;
+  padding:28px 18px 48px;
 }
-
-h1{
-font-size:40px;
-text-align:center;
-margin-bottom:30px;
-font-weight:700;
+.box{
+  background:var(--card);
+  border:1.5px solid var(--border);
+  border-radius:18px;
+  padding:24px;
 }
-
-.card{
-border:1px solid #000;
-border-radius:10px;
-padding:18px;
-margin-bottom:18px;
-font-size:20px;
-line-height:1.7;
-background:#fff;
+.title{
+  margin:0 0 18px;
+  text-align:center;
+  color:var(--blue);
+  font-size:42px;
+  font-weight:800;
 }
-
+.section-title{
+  margin:20px 0 10px;
+  color:var(--blue);
+  font-size:28px;
+  font-weight:800;
+}
+.text{
+  font-size:24px;
+  margin:0;
+}
 .math{
-font-size:22px;
-font-weight:700;
-margin-top:6px;
+  font-size:28px;
+  font-weight:700;
+  margin:10px 0 0;
 }
-
+.prop{
+  border-top:1px solid #e8edf3;
+  margin-top:18px;
+  padding-top:18px;
+}
+.prop:first-of-type{
+  border-top:none;
+  margin-top:0;
+  padding-top:0;
+}
+.prop-name{
+  margin:0 0 8px;
+  color:var(--blue);
+  font-size:24px;
+  font-weight:800;
+}
+.diagram{
+  border:1.5px solid #cfd7e2;
+  border-radius:16px;
+  padding:14px;
+  margin-top:14px;
+  background:#fff;
+}
+.diagram-note{
+  text-align:center;
+  font-size:16px;
+  margin-top:8px;
+}
 .install{
-text-align:center;
-margin-bottom:30px;
+  text-align:center;
+  margin-bottom:20px;
 }
-
-button{
-background:#000;
-color:#fff;
-border:none;
-padding:12px 24px;
-border-radius:10px;
-font-size:16px;
-cursor:pointer;
+.install button{
+  background:#000;
+  color:#fff;
+  border:none;
+  border-radius:12px;
+  padding:12px 22px;
+  font-size:16px;
+  cursor:pointer;
 }
-
-.note{
-margin-top:20px;
-font-size:14px;
-text-align:center;
+#installMsg{
+  margin-top:8px;
+  font-size:14px;
 }
-
+svg{
+  width:100%;
+  height:auto;
+  display:block;
+}
+.small{
+  font-size:22px;
+}
+@media (max-width:700px){
+  .title{font-size:34px}
+  .section-title{font-size:24px}
+  .prop-name{font-size:21px}
+  .text,.small{font-size:20px}
+  .math{font-size:24px}
+}
 </style>
-<script src="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraphcore.js"></script>
 </head>
-
 <body>
+<div class="page">
 
-<div class="wrap">
+  <div class="install">
+    <button id="installBtn">התקן אפליקציה</button>
+    <div id="installMsg"></div>
+  </div>
 
-<div class="install">
-<button id="installBtn">התקן אפליקציה</button>
-<div class="card"><svg viewBox="0 0 500 300" style="width:100%"><polygon points="120,220 360,220 420,100 180,100" fill="none" stroke="#000" stroke-width="3"/><line x1="120" y1="220" x2="420" y2="100" stroke="#000" stroke-width="2" stroke-dasharray="6"/><line x1="360" y1="220" x2="180" y2="100" stroke="#000" stroke-width="2" stroke-dasharray="6"/><circle cx="120" cy="220" r="4" fill="#000"/><circle cx="360" cy="220" r="4" fill="#000"/><circle cx="420" cy="100" r="4" fill="#000"/><circle cx="180" cy="100" r="4" fill="#000"/><text x="105" y="240" font-size="18">A</text><text x="360" y="240" font-size="18">B</text><text x="425" y="100" font-size="18">C</text><text x="165" y="90" font-size="18">D</text></svg></div>
-<div class="note" id="installMsg"></div>
-<div class="card"><svg viewBox="0 0 500 300" style="width:100%"><polygon points="120,220 360,220 420,100 180,100" fill="none" stroke="#000" stroke-width="3"/><line x1="120" y1="220" x2="420" y2="100" stroke="#000" stroke-width="2" stroke-dasharray="6"/><line x1="360" y1="220" x2="180" y2="100" stroke="#000" stroke-width="2" stroke-dasharray="6"/><circle cx="120" cy="220" r="4" fill="#000"/><circle cx="360" cy="220" r="4" fill="#000"/><circle cx="420" cy="100" r="4" fill="#000"/><circle cx="180" cy="100" r="4" fill="#000"/><text x="105" y="240" font-size="18">A</text><text x="360" y="240" font-size="18">B</text><text x="425" y="100" font-size="18">C</text><text x="165" y="90" font-size="18">D</text></svg></div>
-</div>
+  <div class="box">
+    <h1 class="title">מקבילית</h1>
 
-<h1>מקבילית</h1>
+    <h2 class="section-title">הגדרה</h2>
+    <p class="text">מרובע שבו כל זוג צלעות נגדיות מקבילות נקרא מקבילית.</p>
+    <div class="math">AB ∥ CD</div>
+    <div class="math">BC ∥ AD</div>
 
-<div class="card">
-מרובע שבו כל זוג צלעות נגדיות מקבילות
-<div class="card"><svg viewBox="0 0 500 300" style="width:100%"><polygon points="120,220 360,220 420,100 180,100" fill="none" stroke="#000" stroke-width="3"/><line x1="120" y1="220" x2="420" y2="100" stroke="#000" stroke-width="2" stroke-dasharray="6"/><line x1="360" y1="220" x2="180" y2="100" stroke="#000" stroke-width="2" stroke-dasharray="6"/><circle cx="120" cy="220" r="4" fill="#000"/><circle cx="360" cy="220" r="4" fill="#000"/><circle cx="420" cy="100" r="4" fill="#000"/><circle cx="180" cy="100" r="4" fill="#000"/><text x="105" y="240" font-size="18">A</text><text x="360" y="240" font-size="18">B</text><text x="425" y="100" font-size="18">C</text><text x="165" y="90" font-size="18">D</text></svg></div>
-</div>
+    <div class="diagram">
+      <svg viewBox="0 0 760 360" aria-label="מקבילית ABCD">
+        <defs>
+          <marker id="arr1" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+            <path d="M0,0 L10,5 L0,10 z" fill="#111"></path>
+          </marker>
+          <marker id="arr2" markerWidth="10" markerHeight="10" refX="2" refY="5" orient="auto">
+            <path d="M10,0 L0,5 L10,10 z" fill="#111"></path>
+          </marker>
+        </defs>
 
-<div class="card">
-<div class="card"><svg viewBox="0 0 500 300" style="width:100%"><polygon points="120,220 360,220 420,100 180,100" fill="none" stroke="#000" stroke-width="3"/><line x1="120" y1="220" x2="420" y2="100" stroke="#000" stroke-width="2" stroke-dasharray="6"/><line x1="360" y1="220" x2="180" y2="100" stroke="#000" stroke-width="2" stroke-dasharray="6"/><circle cx="120" cy="220" r="4" fill="#000"/><circle cx="360" cy="220" r="4" fill="#000"/><circle cx="420" cy="100" r="4" fill="#000"/><circle cx="180" cy="100" r="4" fill="#000"/><text x="105" y="240" font-size="18">A</text><text x="360" y="240" font-size="18">B</text><text x="425" y="100" font-size="18">C</text><text x="165" y="90" font-size="18">D</text></svg></div>
-<div class="math">AB ∥ CD</div>
-<div class="card"><svg viewBox="0 0 500 300" style="width:100%"><polygon points="120,220 360,220 420,100 180,100" fill="none" stroke="#000" stroke-width="3"/><line x1="120" y1="220" x2="420" y2="100" stroke="#000" stroke-width="2" stroke-dasharray="6"/><line x1="360" y1="220" x2="180" y2="100" stroke="#000" stroke-width="2" stroke-dasharray="6"/><circle cx="120" cy="220" r="4" fill="#000"/><circle cx="360" cy="220" r="4" fill="#000"/><circle cx="420" cy="100" r="4" fill="#000"/><circle cx="180" cy="100" r="4" fill="#000"/><text x="105" y="240" font-size="18">A</text><text x="360" y="240" font-size="18">B</text><text x="425" y="100" font-size="18">C</text><text x="165" y="90" font-size="18">D</text></svg></div>
-<div class="math">BC ∥ AD</div>
-<div class="card"><svg viewBox="0 0 500 300" style="width:100%"><polygon points="120,220 360,220 420,100 180,100" fill="none" stroke="#000" stroke-width="3"/><line x1="120" y1="220" x2="420" y2="100" stroke="#000" stroke-width="2" stroke-dasharray="6"/><line x1="360" y1="220" x2="180" y2="100" stroke="#000" stroke-width="2" stroke-dasharray="6"/><circle cx="120" cy="220" r="4" fill="#000"/><circle cx="360" cy="220" r="4" fill="#000"/><circle cx="420" cy="100" r="4" fill="#000"/><circle cx="180" cy="100" r="4" fill="#000"/><text x="105" y="240" font-size="18">A</text><text x="360" y="240" font-size="18">B</text><text x="425" y="100" font-size="18">C</text><text x="165" y="90" font-size="18">D</text></svg></div>
-</div>
+        <polygon points="130,260 430,260 590,110 290,110" fill="none" stroke="#111" stroke-width="4"></polygon>
 
-<div class="card">
-צלעות נגדיות שוות
-<div class="card"><svg viewBox="0 0 500 300" style="width:100%"><polygon points="120,220 360,220 420,100 180,100" fill="none" stroke="#000" stroke-width="3"/><line x1="120" y1="220" x2="420" y2="100" stroke="#000" stroke-width="2" stroke-dasharray="6"/><line x1="360" y1="220" x2="180" y2="100" stroke="#000" stroke-width="2" stroke-dasharray="6"/><circle cx="120" cy="220" r="4" fill="#000"/><circle cx="360" cy="220" r="4" fill="#000"/><circle cx="420" cy="100" r="4" fill="#000"/><circle cx="180" cy="100" r="4" fill="#000"/><text x="105" y="240" font-size="18">A</text><text x="360" y="240" font-size="18">B</text><text x="425" y="100" font-size="18">C</text><text x="165" y="90" font-size="18">D</text></svg></div>
-<div class="math">AB = CD</div>
-<div class="card"><svg viewBox="0 0 500 300" style="width:100%"><polygon points="120,220 360,220 420,100 180,100" fill="none" stroke="#000" stroke-width="3"/><line x1="120" y1="220" x2="420" y2="100" stroke="#000" stroke-width="2" stroke-dasharray="6"/><line x1="360" y1="220" x2="180" y2="100" stroke="#000" stroke-width="2" stroke-dasharray="6"/><circle cx="120" cy="220" r="4" fill="#000"/><circle cx="360" cy="220" r="4" fill="#000"/><circle cx="420" cy="100" r="4" fill="#000"/><circle cx="180" cy="100" r="4" fill="#000"/><text x="105" y="240" font-size="18">A</text><text x="360" y="240" font-size="18">B</text><text x="425" y="100" font-size="18">C</text><text x="165" y="90" font-size="18">D</text></svg></div>
-<div class="math">BC = AD</div>
-<div class="card"><svg viewBox="0 0 500 300" style="width:100%"><polygon points="120,220 360,220 420,100 180,100" fill="none" stroke="#000" stroke-width="3"/><line x1="120" y1="220" x2="420" y2="100" stroke="#000" stroke-width="2" stroke-dasharray="6"/><line x1="360" y1="220" x2="180" y2="100" stroke="#000" stroke-width="2" stroke-dasharray="6"/><circle cx="120" cy="220" r="4" fill="#000"/><circle cx="360" cy="220" r="4" fill="#000"/><circle cx="420" cy="100" r="4" fill="#000"/><circle cx="180" cy="100" r="4" fill="#000"/><text x="105" y="240" font-size="18">A</text><text x="360" y="240" font-size="18">B</text><text x="425" y="100" font-size="18">C</text><text x="165" y="90" font-size="18">D</text></svg></div>
-</div>
+        <line x1="185" y1="287" x2="375" y2="287" stroke="#111" stroke-width="3" marker-start="url(#arr2)" marker-end="url(#arr1)"></line>
+        <line x1="345" y1="83" x2="535" y2="83" stroke="#111" stroke-width="3" marker-start="url(#arr2)" marker-end="url(#arr1)"></line>
 
-<div class="card">
-זוויות נגדיות שוות
-<div class="card"><svg viewBox="0 0 500 300" style="width:100%"><polygon points="120,220 360,220 420,100 180,100" fill="none" stroke="#000" stroke-width="3"/><line x1="120" y1="220" x2="420" y2="100" stroke="#000" stroke-width="2" stroke-dasharray="6"/><line x1="360" y1="220" x2="180" y2="100" stroke="#000" stroke-width="2" stroke-dasharray="6"/><circle cx="120" cy="220" r="4" fill="#000"/><circle cx="360" cy="220" r="4" fill="#000"/><circle cx="420" cy="100" r="4" fill="#000"/><circle cx="180" cy="100" r="4" fill="#000"/><text x="105" y="240" font-size="18">A</text><text x="360" y="240" font-size="18">B</text><text x="425" y="100" font-size="18">C</text><text x="165" y="90" font-size="18">D</text></svg></div>
-<div class="math">∠A = ∠C</div>
-<div class="card"><svg viewBox="0 0 500 300" style="width:100%"><polygon points="120,220 360,220 420,100 180,100" fill="none" stroke="#000" stroke-width="3"/><line x1="120" y1="220" x2="420" y2="100" stroke="#000" stroke-width="2" stroke-dasharray="6"/><line x1="360" y1="220" x2="180" y2="100" stroke="#000" stroke-width="2" stroke-dasharray="6"/><circle cx="120" cy="220" r="4" fill="#000"/><circle cx="360" cy="220" r="4" fill="#000"/><circle cx="420" cy="100" r="4" fill="#000"/><circle cx="180" cy="100" r="4" fill="#000"/><text x="105" y="240" font-size="18">A</text><text x="360" y="240" font-size="18">B</text><text x="425" y="100" font-size="18">C</text><text x="165" y="90" font-size="18">D</text></svg></div>
-<div class="math">∠B = ∠D</div>
-<div class="card"><svg viewBox="0 0 500 300" style="width:100%"><polygon points="120,220 360,220 420,100 180,100" fill="none" stroke="#000" stroke-width="3"/><line x1="120" y1="220" x2="420" y2="100" stroke="#000" stroke-width="2" stroke-dasharray="6"/><line x1="360" y1="220" x2="180" y2="100" stroke="#000" stroke-width="2" stroke-dasharray="6"/><circle cx="120" cy="220" r="4" fill="#000"/><circle cx="360" cy="220" r="4" fill="#000"/><circle cx="420" cy="100" r="4" fill="#000"/><circle cx="180" cy="100" r="4" fill="#000"/><text x="105" y="240" font-size="18">A</text><text x="360" y="240" font-size="18">B</text><text x="425" y="100" font-size="18">C</text><text x="165" y="90" font-size="18">D</text></svg></div>
-</div>
+        <line x1="95" y1="225" x2="255" y2="76" stroke="#111" stroke-width="3" marker-start="url(#arr2)" marker-end="url(#arr1)"></line>
+        <line x1="465" y1="295" x2="625" y2="146" stroke="#111" stroke-width="3" marker-start="url(#arr2)" marker-end="url(#arr1)"></line>
 
-<div class="card">
-זוויות סמוכות משלימות
-<div class="card"><svg viewBox="0 0 500 300" style="width:100%"><polygon points="120,220 360,220 420,100 180,100" fill="none" stroke="#000" stroke-width="3"/><line x1="120" y1="220" x2="420" y2="100" stroke="#000" stroke-width="2" stroke-dasharray="6"/><line x1="360" y1="220" x2="180" y2="100" stroke="#000" stroke-width="2" stroke-dasharray="6"/><circle cx="120" cy="220" r="4" fill="#000"/><circle cx="360" cy="220" r="4" fill="#000"/><circle cx="420" cy="100" r="4" fill="#000"/><circle cx="180" cy="100" r="4" fill="#000"/><text x="105" y="240" font-size="18">A</text><text x="360" y="240" font-size="18">B</text><text x="425" y="100" font-size="18">C</text><text x="165" y="90" font-size="18">D</text></svg></div>
-<div class="math">∠A + ∠B = 180°</div>
-<div class="card"><svg viewBox="0 0 500 300" style="width:100%"><polygon points="120,220 360,220 420,100 180,100" fill="none" stroke="#000" stroke-width="3"/><line x1="120" y1="220" x2="420" y2="100" stroke="#000" stroke-width="2" stroke-dasharray="6"/><line x1="360" y1="220" x2="180" y2="100" stroke="#000" stroke-width="2" stroke-dasharray="6"/><circle cx="120" cy="220" r="4" fill="#000"/><circle cx="360" cy="220" r="4" fill="#000"/><circle cx="420" cy="100" r="4" fill="#000"/><circle cx="180" cy="100" r="4" fill="#000"/><text x="105" y="240" font-size="18">A</text><text x="360" y="240" font-size="18">B</text><text x="425" y="100" font-size="18">C</text><text x="165" y="90" font-size="18">D</text></svg></div>
-</div>
+        <circle cx="130" cy="260" r="5" fill="#111"></circle>
+        <circle cx="430" cy="260" r="5" fill="#111"></circle>
+        <circle cx="590" cy="110" r="5" fill="#111"></circle>
+        <circle cx="290" cy="110" r="5" fill="#111"></circle>
 
-<div class="card">
-האלכסונים חוצים זה את זה
-<div class="card"><svg viewBox="0 0 500 300" style="width:100%"><polygon points="120,220 360,220 420,100 180,100" fill="none" stroke="#000" stroke-width="3"/><line x1="120" y1="220" x2="420" y2="100" stroke="#000" stroke-width="2" stroke-dasharray="6"/><line x1="360" y1="220" x2="180" y2="100" stroke="#000" stroke-width="2" stroke-dasharray="6"/><circle cx="120" cy="220" r="4" fill="#000"/><circle cx="360" cy="220" r="4" fill="#000"/><circle cx="420" cy="100" r="4" fill="#000"/><circle cx="180" cy="100" r="4" fill="#000"/><text x="105" y="240" font-size="18">A</text><text x="360" y="240" font-size="18">B</text><text x="425" y="100" font-size="18">C</text><text x="165" y="90" font-size="18">D</text></svg></div>
-<div class="math">AO = OC</div>
-<div class="card"><svg viewBox="0 0 500 300" style="width:100%"><polygon points="120,220 360,220 420,100 180,100" fill="none" stroke="#000" stroke-width="3"/><line x1="120" y1="220" x2="420" y2="100" stroke="#000" stroke-width="2" stroke-dasharray="6"/><line x1="360" y1="220" x2="180" y2="100" stroke="#000" stroke-width="2" stroke-dasharray="6"/><circle cx="120" cy="220" r="4" fill="#000"/><circle cx="360" cy="220" r="4" fill="#000"/><circle cx="420" cy="100" r="4" fill="#000"/><circle cx="180" cy="100" r="4" fill="#000"/><text x="105" y="240" font-size="18">A</text><text x="360" y="240" font-size="18">B</text><text x="425" y="100" font-size="18">C</text><text x="165" y="90" font-size="18">D</text></svg></div>
-<div class="math">BO = OD</div>
-<div class="card"><svg viewBox="0 0 500 300" style="width:100%"><polygon points="120,220 360,220 420,100 180,100" fill="none" stroke="#000" stroke-width="3"/><line x1="120" y1="220" x2="420" y2="100" stroke="#000" stroke-width="2" stroke-dasharray="6"/><line x1="360" y1="220" x2="180" y2="100" stroke="#000" stroke-width="2" stroke-dasharray="6"/><circle cx="120" cy="220" r="4" fill="#000"/><circle cx="360" cy="220" r="4" fill="#000"/><circle cx="420" cy="100" r="4" fill="#000"/><circle cx="180" cy="100" r="4" fill="#000"/><text x="105" y="240" font-size="18">A</text><text x="360" y="240" font-size="18">B</text><text x="425" y="100" font-size="18">C</text><text x="165" y="90" font-size="18">D</text></svg></div>
-</div>
+        <text x="108" y="292" font-size="28" font-weight="700">A</text>
+        <text x="438" y="292" font-size="28" font-weight="700">B</text>
+        <text x="602" y="116" font-size="28" font-weight="700">C</text>
+        <text x="268" y="102" font-size="28" font-weight="700">D</text>
+      </svg>
+      <div class="diagram-note">ABCD מקבילית</div>
+    </div>
 
-<div class="card"><svg viewBox="0 0 500 300" style="width:100%"><polygon points="120,220 360,220 420,100 180,100" fill="none" stroke="#000" stroke-width="3"/><line x1="120" y1="220" x2="420" y2="100" stroke="#000" stroke-width="2" stroke-dasharray="6"/><line x1="360" y1="220" x2="180" y2="100" stroke="#000" stroke-width="2" stroke-dasharray="6"/><circle cx="120" cy="220" r="4" fill="#000"/><circle cx="360" cy="220" r="4" fill="#000"/><circle cx="420" cy="100" r="4" fill="#000"/><circle cx="180" cy="100" r="4" fill="#000"/><text x="105" y="240" font-size="18">A</text><text x="360" y="240" font-size="18">B</text><text x="425" y="100" font-size="18">C</text><text x="165" y="90" font-size="18">D</text></svg></div>
+    <h2 class="section-title">תכונות המקבילית</h2>
+
+    <div class="prop">
+      <h3 class="prop-name">1. צלעות נגדיות מקבילות</h3>
+      <div class="small">נתון: ABCD מקבילית</div>
+      <div class="math">AB ∥ CD</div>
+      <div class="math">BC ∥ AD</div>
+    </div>
+
+    <div class="prop">
+      <h3 class="prop-name">2. צלעות נגדיות שוות</h3>
+      <div class="small">נתון: ABCD מקבילית</div>
+      <div class="math">AB = CD</div>
+      <div class="math">BC = AD</div>
+    </div>
+
+    <div class="prop">
+      <h3 class="prop-name">3. זוויות נגדיות שוות</h3>
+      <div class="small">נתון: ABCD מקבילית</div>
+      <div class="math">∠A = ∠C</div>
+      <div class="math">∠B = ∠D</div>
+    </div>
+
+    <div class="prop">
+      <h3 class="prop-name">4. זוויות סמוכות משלימות ל־180°</h3>
+      <div class="small">נתון: ABCD מקבילית</div>
+      <div class="math">∠A + ∠B = 180°</div>
+      <div class="math">∠B + ∠C = 180°</div>
+    </div>
+
+    <div class="prop">
+      <h3 class="prop-name">5. האלכסונים חוצים זה את זה</h3>
+      <div class="small">אם האלכסונים AC ו־BD נחתכים בנקודה O, אז:</div>
+      <div class="math">AO = OC</div>
+      <div class="math">BO = OD</div>
+    </div>
+  </div>
 </div>
 
 <script src="install.js"></script>
-
 </body>
 </html>
