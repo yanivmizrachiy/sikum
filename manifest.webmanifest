@@ -1,10 +1,12 @@
 {
-  "name": "סיכום",
-  "short_name": "סיכום",
+  "name": "סיכום מקבילית",
+  "short_name": "מקבילית",
   "start_url": "./",
+  "scope": "./",
   "display": "standalone",
-  "background_color": "#f0fdf4",
+  "background_color": "#eef7f1",
   "theme_color": "#16a34a",
+  "description": "סיכום מקבילית עם התקנה למסך הבית",
   "icons": [
     {
       "src": "icons/icon-192.png",
