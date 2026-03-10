@@ -1,1 +1,0 @@
-/* static geometry only */

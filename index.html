@@ -1,159 +1,57 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>סיכום – מקבילית</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700&display=swap" rel="stylesheet">
-
-<style>
-body{
-font-family:"Assistant",sans-serif;
-background:#ffffff;
-color:#111;
-margin:0;
-}
-.page{
-max-width:900px;
-margin:auto;
-padding:30px;
-}
-.box{
-border:1.5px solid #d6dde6;
-border-radius:16px;
-padding:24px;
-}
-h1{
-color:#1e3a8a;
-font-size:44px;
-text-align:center;
-margin-bottom:24px;
-}
-h2{
-color:#1e3a8a;
-font-size:28px;
-margin-top:20px;
-}
-.prop{
-margin-top:16px;
-border-top:1px solid #e5e7eb;
-padding-top:16px;
-}
-.math{
-font-size:28px;
-font-weight:600;
-margin-top:6px;
-}
-svg{
-width:100%;
-margin-top:16px;
-}
-.vertex{
-font-size:40px;
-font-weight:700;
-}
-.install{
-text-align:center;
-margin-bottom:20px;
-}
-button{
-background:black;
-color:white;
-border:none;
-padding:10px 20px;
-border-radius:10px;
-font-size:16px;
-cursor:pointer;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>סיכום גיאומטריה | מקבילית</title>
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary-blue: #0d47a1; --text-black: #1a1a1a; --border-gray: #e0e0e0; --bg-paper: #ffffff; --highlight-bg: #f0f4f8; }
+        body { font-family: 'Assistant', sans-serif; background-color: #f5f7fa; color: var(--text-black); margin: 0; padding: 15px; display: flex; justify-content: center; line-height: 1.6; }
+        .textbook-container { background: var(--bg-paper); max-width: 700px; width: 100%; padding: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border-radius: 12px; border-top: 10px solid var(--primary-blue); }
+        header { border-bottom: 2px solid var(--primary-blue); margin-bottom: 25px; padding-bottom: 10px; }
+        h1 { color: var(--primary-blue); font-size: 2.2rem; margin: 0; font-weight: 700; }
+        .section { margin-bottom: 30px; }
+        .definition-box { font-size: 1.2rem; padding: 15px; background-color: var(--highlight-bg); border-radius: 8px; border-right: 5px solid var(--primary-blue); }
+        .definition-title { font-weight: 700; color: var(--primary-blue); margin-left: 5px; }
+        .geometry-display { text-align: center; margin: 25px 0; padding: 20px; background: #fff; border: 1px solid var(--border-gray); border-radius: 8px; }
+        .math-italic { font-family: 'Times New Roman', serif; font-style: italic; font-weight: bold; }
+        .properties-list { padding: 0; list-style: none; }
+        .property-card { margin-bottom: 15px; padding: 18px; background: #fff; border: 1px solid var(--border-gray); border-radius: 8px; display: flex; flex-direction: column; }
+        .property-number { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; background-color: var(--primary-blue); color: white; border-radius: 50%; font-weight: 800; font-size: 0.95rem; margin-left: 10px; flex-shrink: 0; }
+        .property-content { display: flex; align-items: flex-start; margin-bottom: 5px; }
+        .math-notation { display: block; margin-top: 10px; padding: 8px; background: #fdfdfd; border-top: 1px dashed #eee; font-size: 1.1rem; direction: ltr; text-align: right; color: #333; }
+        @media (max-width: 480px) { .textbook-container { padding: 20px; } h1 { font-size: 1.8rem; } }
+    </style>
 </head>
-
 <body>
-
-<div class="page">
-
-<div class="install">
-<button id="installBtn">התקן אפליקציה</button>
-<div id="installMsg"></div>
+<div class="textbook-container">
+    <header><h1>מקבילית</h1></header>
+    <div class="section">
+        <div class="definition-box"><span class="definition-title">הגדרה:</span> מרובע שבו כל זוג צלעות נגדיות מקבילות זו לזו הוא מקבילית.</div>
+    </div>
+    <div class="geometry-display">
+        <svg width="100%" height="200" viewBox="0 0 340 180" preserveAspectRatio="xMidYMid meet">
+            <path d="M60 140 L240 140 L280 50 L100 50 Z" fill="rgba(13, 71, 161, 0.05)" stroke="black" stroke-width="2.5"/>
+            <line x1="60" y1="140" x2="280" y2="50" stroke="#999" stroke-width="1.5" stroke-dasharray="6,4" />
+            <line x1="240" y1="140" x2="100" y2="50" stroke="#999" stroke-width="1.5" stroke-dasharray="6,4" />
+            <circle cx="170" cy="95" r="3" fill="black" />
+            <text x="175" y="112" font-size="20" class="math-italic">O</text>
+            <text x="50" y="155" font-size="24" class="math-italic" text-anchor="end">A</text>
+            <text x="250" y="155" font-size="24" class="math-italic" text-anchor="start">B</text>
+            <text x="290" y="45" font-size="24" class="math-italic" text-anchor="start">C</text>
+            <text x="90" y="45" font-size="24" class="math-italic" text-anchor="end">D</text>
+        </svg>
+    </div>
+    <div class="section">
+        <h2 style="color: var(--primary-blue); font-size: 1.4rem;">תכונות המקבילית</h2>
+        <div class="properties-list">
+            <div class="property-card"><div class="property-content"><span class="property-number">1</span><span>במקבילית, כל זוג צלעות נגדיות שוות זו לזו.</span></div><span class="math-notation">AB = CD , AD = BC</span></div>
+            <div class="property-card"><div class="property-content"><span class="property-number">2</span><span>במקבילית, כל זוג זוויות נגדיות שוות זו לזו.</span></div><span class="math-notation">∠A = ∠C , ∠B = ∠D</span></div>
+            <div class="property-card"><div class="property-content"><span class="property-number">3</span><span>במקבילית, האלכסונים חוצים זה את זה.</span></div><span class="math-notation">AO = OC , BO = OD</span></div>
+            <div class="property-card"><div class="property-content"><span class="property-number">4</span><span>סכום כל שתי זוויות סמוכות במקבילית הוא 180 מעלות.</span></div><span class="math-notation">∠A + ∠B = 180°</span></div>
+        </div>
+    </div>
 </div>
-
-<div class="box">
-
-<h1>מקבילית</h1>
-
-<p class="text"><strong>הגדרה:</strong> 
-
-<p>
-מרובע שבו כל זוג צלעות נגדיות מקבילות נקרא מקבילית.
- נקרא מקבילית. נקרא מקבילית.</p>
-
-<div class="math">AB ∥ CD</div>
-<div class="math">BC ∥ AD</div>
-
-<svg viewBox="0 0 600 320">
-
-<polygon points="120,240 420,240 520,100 220,100"
-fill="none"
-stroke="#000"
-stroke-width="4"/>
-
-<line x1="120" y1="240" x2="520" y2="100"
-stroke="#000"
-stroke-dasharray="6"/>
-
-<line x1="420" y1="240" x2="220" y2="100"
-stroke="#000"
-stroke-dasharray="6"/>
-
-<circle cx="120" cy="240" r="5" fill="#000"/>
-<circle cx="420" cy="240" r="5" fill="#000"/>
-<circle cx="520" cy="100" r="5" fill="#000"/>
-<circle cx="220" cy="100" r="5" fill="#000"/>
-
-<text class="vertex" x="95" y="265">A</text>
-<text class="vertex" x="430" y="265">B</text>
-<text class="vertex" x="535" y="105">C</text>
-<text class="vertex" x="195" y="95">D</text>
-
-</svg>
-
-<h2>תכונות</h2>
-
-<div class="prop">
-<strong>1. צלעות נגדיות מקבילות</strong>
-<div class="math">AB ∥ CD</div>
-<div class="math">BC ∥ AD</div>
-</div>
-
-<div class="prop">
-<strong>2. צלעות נגדיות שוות</strong>
-<div class="math">AB = CD</div>
-<div class="math">BC = AD</div>
-</div>
-
-<div class="prop">
-<strong>3. זוויות נגדיות שוות</strong>
-<div class="math">∠A = ∠C</div>
-<div class="math">∠B = ∠D</div>
-</div>
-
-<div class="prop">
-<strong>4. זוויות סמוכות משלימות</strong>
-<div class="math">∠A + ∠B = 180°</div>
-<div class="math">∠B + ∠C = 180°</div>
-</div>
-
-<div class="prop">
-<strong>5. האלכסונים חוצים זה את זה</strong>
-<div class="math">AO = OC</div>
-<div class="math">BO = OD</div>
-</div>
-
-</div>
-</div>
-
-<script src="install.js"></script>
-
 </body>
 </html>
