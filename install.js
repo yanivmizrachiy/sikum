@@ -1,46 +1,39 @@
 let deferredPrompt = null;
 
-function msg(t){
-  const el = document.getElementById("installMsg");
-  if (el) el.textContent = t || "";
+function setInstallMessage(text) {
+  const el = document.getElementById('installMsg');
+  if (el) el.textContent = text || '';
 }
 
-window.addEventListener("beforeinstallprompt", (e) => {
+window.addEventListener('beforeinstallprompt', (e) => {
   e.preventDefault();
   deferredPrompt = e;
-  const btn = document.getElementById("installBtn");
-  if (btn) {
-    btn.disabled = false;
-    btn.textContent = "התקן למסך הבית";
-  }
-  msg("");
+  setInstallMessage('אפשר להתקין עכשיו למסך הבית.');
 });
 
-window.addEventListener("appinstalled", () => {
+window.addEventListener('appinstalled', () => {
   deferredPrompt = null;
-  const btn = document.getElementById("installBtn");
+  const btn = document.getElementById('installBtn');
   if (btn) {
     btn.disabled = true;
-    btn.textContent = "הותקן בהצלחה";
+    btn.textContent = 'הותקן בהצלחה';
   }
-  msg("האפליקציה נוספה למסך הבית.");
+  setInstallMessage('האפליקציה נוספה למסך הבית.');
 });
 
-document.addEventListener("DOMContentLoaded", () => {
-  const btn = document.getElementById("installBtn");
+document.addEventListener('DOMContentLoaded', () => {
+  const btn = document.getElementById('installBtn');
   if (!btn) return;
 
-  btn.style.display = "inline-flex";
-  btn.disabled = false;
-
+  btn.style.display = 'inline-flex';
   btn.onclick = async () => {
     if (deferredPrompt) {
       try {
         await deferredPrompt.prompt();
         await deferredPrompt.userChoice;
-      } catch(e) {}
+      } catch {}
       return;
     }
-    msg("אם לא נפתח חלון התקנה: פתח בתפריט הדפדפן ⋮ ואז בחר 'הוסף למסך הבית' או 'התקן אפליקציה'.");
+    setInstallMessage("בדפדפן הזה אין כרגע חלון התקנה אוטומטי. פתח ⋮ ואז בחר 'הוסף למסך הבית' או 'התקן אפליקציה'.");
   };
 });
